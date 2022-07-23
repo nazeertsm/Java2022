@@ -8,7 +8,8 @@ public class WhileLoop1 {
 			System.out.println("*");
 
 			i++;
-
+			
+			
 		}
 	}
 }
