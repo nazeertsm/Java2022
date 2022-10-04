@@ -6,6 +6,19 @@ public class AutoBoxing1 {
 
 	public static void main(String[] args) {
 		
+		/*
+		================================
+		valueOf() -> To convert String/primitive to Wrapper Object
+		xxxxValue() -> To convert Wrapper to primitive type.
+		Integer i = 10;
+		|
+		|compiler will make the following change
+		|
+		Integer i = Integer.valueOf(10);
+		Automatic conversion of primitive type to wrapper type done by the compiler is
+		called "AutoBoxing".
+		*/
+		
 		Integer i1= new Integer(10);
 		int i2 = i1;
 		/*
@@ -18,21 +31,8 @@ public class AutoBoxing1 {
 
 		//**************************************
 		
-	
-		
-		
 	}
 	
 
 }
 
-/*
-================================
-valueOf() -> To convert String/primitive to Wrapper Object
-xxxxValue() -> To convert Wrapper to primitive type.
-Integer i = 10;
-|
-|compiler will make the following change
-|
-Integer i = Integer.valueOf(10);
-*/
