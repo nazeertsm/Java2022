@@ -1,6 +1,6 @@
 package MultiThreading;
 
-class Alpha extends Thread {
+class SAlpha extends Thread {
 	public void run() {
 
 		String t = Thread.currentThread().getName();
@@ -90,9 +90,9 @@ public class LaunchSinglerunMethod1 {
 
 	public static void main(String[] args) {
 
-		Alpha a1 = new Alpha();
-		Alpha a2 = new Alpha();
-		Alpha a3 = new Alpha();
+		SAlpha a1 = new SAlpha();
+		SAlpha a2 = new SAlpha();
+		SAlpha a3 = new SAlpha();
 
 		a1.setName("BANK");
 		a2.setName("PRINT");
