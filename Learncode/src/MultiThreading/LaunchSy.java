@@ -1,5 +1,5 @@
 package MultiThreading;
-class iNeuron implements Runnable
+class Neuron implements Runnable
 {
     public void run()
     {
@@ -31,7 +31,7 @@ public class LaunchSy {
 	public static void main(String[] args) 
 	{
 		
-          iNeuron in=new iNeuron();
+          Neuron in=new Neuron();
           Thread t1=new Thread(in);
           Thread t2=new Thread(in);
           Thread t3=new Thread(in);

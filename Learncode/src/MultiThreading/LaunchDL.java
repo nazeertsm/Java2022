@@ -4,6 +4,7 @@ class Warrior implements Runnable
 	String res1=new String("Brhmastra");
 	String res2=new String("PashuPatastra");
 	String res3=new String("Sarpastra");
+	
 	public void run()
 	{
 		try
@@ -95,18 +96,7 @@ public class LaunchDL {
 		
 		t1.start();
 		t2.start();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 
 	}
 
