@@ -1,15 +1,15 @@
 package InterThreadCommunicationApp.in.ineuron.main;
-//updated pro
+//updated pro Test
 
 class Demo2 extends Thread {
 //data is updated
 	int total = 0;
 
 	public void run() {
-//producer thread
+		//producer thread
 		synchronized (this) {
 			System.out.println("Child thread starts the calculation");// step-2
-//sum of first 100 numbers
+			//sum of first 100 numbers
 			for (int i = 1; i <= 100; i++) {
 				total = total + i;
 			}
