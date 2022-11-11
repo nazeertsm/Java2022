@@ -14,6 +14,8 @@ public class Test4 {
 		Stream<Integer> stream4 = nums4.stream();
 
 		stream4.forEach(i -> System.out.println(i));
+		//Once we use stream we cannot reuse it
+		//stream4.forEach(i -> System.out.println(i)); //exception
 
 	}
 
