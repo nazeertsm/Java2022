@@ -1,0 +1,258 @@
+lambda Expression
+================
+new Thread(
+()-> {
+for (int i =1;i<=5;i++ )
+{
+System.out.println("child thread");
+}
+}
+).start();
+When we use lambda expression,code would be compact and no .class file for lambda
+expression.
+Difference between general class and anonymous inner classes:
+
+General Class
+1) A general class can extends only one class at a time.
+2) A general class can implement any no. Of interfaces at a time.
+3) A general class can extends a class and can implement an interface
+simultaneously.
+4) In normal Java class we can write constructor because we know name of the class.
+Anonmyous Inner class
+1. Of course anonymous inner class also can extends only one class at a time.
+2) But anonymous inner class can implement only one interface at a time.
+3) But anonymous inner class can extends a class or can implements an interface but
+not
+both simultaneously.
+4) But in anonymous inner class we can't write constructor because anonymous inner
+class not
+having any name of the class.
+static nested classes
+=====================
+=> Sometimes we can declare inner classes with static modifier such type of inner
+classes are called static nested classes.
+=> In the case of normal or regular inner classes without existing outer class
+object there is no chance of existing inner class
+object.
+i.e., inner class object is always strongly associated with outer class
+object.
+=> But in the case of static nested class without existing outer class object there
+may be a chance of existing static nested class
+object.
+i.e., static nested class object is not strongly associated with outer
+class object.
+eg#1.
+Example:
+class Test {
+static class Nested{
+public void methodOne(){
+System.out.println("nested class method");
+}
+}
+public static void main(String[] args){
+//Test.Nested t=new Test.Nested();
+//t.methodOne();
+Nested n=new Nested();
+n.methodOne();
+}
+}
+=> Inside static nested classes we can declare static members including main()
+method also.
+Hence it is possible to invoke static nested class directly from the command
+prompt.
+Example:
+class Test {
+static class Nested{
+public static void main(String[] args){
+System.out.println("nested class main method");
+}
+}
+public static void main(String[] args){
+System.out.println("outer class main method");
+}
+}
+java Test
+outer class main method
+java Test$Nested
+nested class main method
+=> From the normal inner class we can access both static and non static members of
+outer class but from static nested class we can access only static members of outer
+class.
+Example:
+class Test {
+int x=10;
+static int y=20;
+static class Nested{
+public void methodOne(){
+System.out.println(x);//C.E:non-static variable x cannot be
+reference from a static context
+System.out.println(y);
+}
+}
+}
+javac Test.java (Test.class, Test$Nested.class)
+Compression between normal or regular class and static nested class ?
+Normal /regular inner class
+1) Without existing outer class object there is no chance of existing inner class
+object.
+That is inner class object is always associated with outer class object.
+2) Inside normal or regular inner class we can't declare static members.
+3) Inside normal inner class we can't declare main() method and hence we can't
+invoke regular inner class directly from the
+command prompt.
+4) From the normal or regular inner class we can access both static and non static
+members of outer class directly.
+Static nested class
+1) Without existing outer class object there may be a chance of existing static
+nested class object.
+That is static nested class object is not associated with outer class object.
+2) Inside static nested class we can declare static members.
+3) Inside static nested class we can declare main() method and hence we can invoke
+static nested class directly from the
+command prompt.
+4) From static nested class we can access only static members of outer class
+directly
+Various possible combinations of nested class &interfaces :
+1. class inside a class :
+We can declare a class inside another class
+Without existing one type of object, if there is no chance of existing another
+type
+of object, then we should go for clas inside a class.
+class University {
+class Department {
+}
+}
+Without existing University object, there is no chance of existing Department
+object.
+i.e., Department object is always associated with University.
+2. interface inside a class :
+We can declare interface inside a class
+class X {
+interface Y {
+}
+}
+Inside class if we required multiple implementation of an interface and these
+implementations of relevant to a particular class, then we should declare interface
+inside a class.
+class VehicleType {
+interface Vehicle {
+public int getNoOfWheels();
+}
+class Bus implements Vehicle {
+public int getNoOfWheels() {
+return 6;
+}
+}
+class Auto implements Vehicle {
+public int getNoOfWheels() {
+return 3;
+}
+}
+}
+3. interface inside a interface :
+We can declare an interface inside another interface.
+interface Map {
+interface Entry {
+public Object getKey();
+public Object getValue();
+public Object setValue(Object newValue);
+}
+}
+Nested interfaces are always public,static whether we are declaring or not. Hence
+we can implements inner inteface directly with out implementing outer interface.
+interface Outer {
+public void methodOne();
+interface Inner {
+public void methodTwo();
+}
+}
+class Test implements Outer.Inner {
+public void methodTwo() {
+System.out.println("Inner interface method");
+}
+public static void main(String args[]) {
+Test t=new Test();
+t.methodTwo();
+}
+}
+Whenever we are implementing Outer interface , it is not required to implement
+Inner interfaces.
+class Test implements Outer {
+public void methodOne() {
+System.out.println("Outer interface method ");
+}
+public static void main(String args[]) {
+Test t=new Test();
+t.methodOne();
+}
+}
+i.e., Both Outer and Inner interfaces we can implement independently.
+4. class inside a interface :
+We can declare a class inside interface. If a class functionality is closely
+associated with
+the user interface then it is highly recommended to declare class inside
+interface.
+Example:
+interface EmailServer {
+public void sendEmail(EmailDetails e);
+class EmailDetails {
+String from;
+String to;
+String subject;
+}
+}
+In the above example EmailDetails functionality is required for EmailService and we
+are
+not using anywhereelse . Hence we can declare EmailDetails class inside
+EmailServiceinterface .
+We can also declare a class inside interface to provide default implementation for
+that
+interface.
+Example :
+interface Vehicle {
+public int getNoOfWheels();
+class DefaultVehicle implements Vehicle {
+public int getNoOfWheels() {
+return 2;
+}
+}
+}
+class Bus implements Vehicle {
+public int getNoOfWheels() {
+return 6;
+}
+}
+class Test {
+public static void main(String args[]) {
+Bus b=new Bus();
+System.out.println(b.getNoOfWheels());//2
+Vehicle.DefaultVehicle d=new Vehicle.DefaultVehicle();
+System.out.println(d.getNoOfWheels());//3
+}
+}
+In the above example DefaultVehicle in the default implementation of Vehicle
+interface where as Bus customized implementation of Vehicle interface.
+The class which is declared inside interface is always static ,hence we can create
+object directly without having outer interface type object.
+Conclusions :
+1. We can declare anything inside any thing with respect to classes and interfaces.
+class A{
+class B{
+}
+}
+class A{
+interface B{//static
+}
+}
+interface A{
+interface B{//public static
+}
+}
+interface A{
+class B{//public static
+}
+}
+2. Nesting interfaces are always public, static whether we are declaring or not.
+3. class which is declared inside interface is always public,static whether we are
+declaring or not
+4. interface declared inside a class is always static,but need not be public.
